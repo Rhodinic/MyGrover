@@ -35,12 +35,11 @@ class ModelRestControllerTest extends AbstractRestTest {
         super.setUp();
         super.setUpBearerToken();
 
-        if(brandRepository.findById(1L).isEmpty()){
-            Brand tempBrand = new Brand();
-            tempBrand.setName("testBrand");
+        // Add a temporary brand for testing
+        Brand tempBrand = new Brand();
+        tempBrand.setName("testBrand");
+        brandRepository.save(tempBrand);
 
-            brandRepository.save(tempBrand);
-        }
     }
 
     @Test
