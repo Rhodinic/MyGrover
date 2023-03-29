@@ -29,6 +29,7 @@ class ModelRestControllerTest extends AbstractRestTest {
     ModelRepository modelRepository;
 
     @Override
+    @Test
     @BeforeAll
     public void setUp(){
         super.setUp();
