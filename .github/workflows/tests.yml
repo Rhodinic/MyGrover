@@ -3,6 +3,11 @@ name: Run automated tests on push
 on:
   push:
 
+permissions:
+  id-token: write
+  contents: read
+  checks: write
+
 jobs:
   build:
 
