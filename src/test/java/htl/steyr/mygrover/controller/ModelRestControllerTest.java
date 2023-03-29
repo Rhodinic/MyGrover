@@ -60,7 +60,7 @@ class ModelRestControllerTest extends AbstractRestTest {
         Model newestModel = modelRepository.findFirstByOrderByIdDesc();
 
         mvc.perform(post(baseUri + "/model/update")
-                        .content("{\"id\": " + newestModel.getId() + ", \"name\": \"testModel2\", \"price\": 10.0, \"brand\": 1}")
+                        .content("{\"id\": " + newestModel.getId() + ", \"name\": \"testModel2\", \"price\": 10.0, \"brand\": " + brandRepository.findFirstByOrderByIdDesc().getId() + "}")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .header("authorization", bearerToken))
@@ -102,7 +102,7 @@ class ModelRestControllerTest extends AbstractRestTest {
     public void testLoadModelForBrand() throws Exception {
         Model newestModel = modelRepository.findFirstByOrderByIdDesc();
 
-        MvcResult result = mvc.perform(get(baseUri + "/model/brand/1")
+        MvcResult result = mvc.perform(get(baseUri + "/model/brand/" + brandRepository.findFirstByOrderByIdDesc().getId())
                         .header("authorization", bearerToken))
                 .andExpect(status().isOk())
                 .andReturn();
