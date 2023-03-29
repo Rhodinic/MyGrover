@@ -47,7 +47,7 @@ class ModelRestControllerTest extends AbstractRestTest {
     @Order(1)
     public void testCreateModel() throws Exception {
         mvc.perform(post(baseUri + "/model/create")
-                        .content("{\"name\": \"TestModel\", \"price\": 6.9, \"brand\": 1}")
+                        .content("{\"name\": \"TestModel\", \"price\": 6.9, \"brand\": " + brandRepository.findFirstByOrderByIdDesc().getId() + "}")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .header("authorization", bearerToken))
